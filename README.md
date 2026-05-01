@@ -42,7 +42,7 @@ Ce projet est un site web portfolio statique contenant quatre pages principales:
 
 ## 🌐 Lien du site en ligne
 
-🔗 [Voir le portfolio en ligne](https://ibrahimakhalilfaye6-a11y.github.io/PORTFOLIO/PageAccueil.html)
+🔗 [Voir le portfolio en ligne](https://ibrahimakhalilfaye6-a11y.github.io/Fisrt-Project-/)
 
 ---
 
