@@ -1,4 +1,3 @@
-<img width="1885" height="902" alt="accueil v ordi" src="https://github.com/user-attachments/assets/b9c31c39-ab8f-433f-bcdd-92f10afbc1e3" />
 # PORTFOLIO
 # 💻 Portfolio Développeur
 
@@ -27,15 +26,14 @@ Ce projet est un site web portfolio statique contenant quatre pages principales:
 
 ## 📸 Captures d'écran
 
+Capture de la page accueil, version mobile avec le mode sombre. 
+<img width="585" height="1266" alt="accueil ver mobile(dark)" src="https://github.com/user-attachments/assets/96b279e9-9eb1-43a6-a1c6-5b1510adfdb5" />
 
+Capture de la page à propos, version Ipad avec le mode clair. 
+<img width="1152" height="1536" alt="a propos ver  ipad(light)" src="https://github.com/user-attachments/assets/0982c1f8-31f7-4509-9d15-c7dcafae6377" />
 
-<img width="498" height="1080" alt="Propos v  mobile(Light)" src="https://github.com/user-attachments/assets/a1b2ead3-1270-4781-8dd5-a0a5ba9eb204" />
-<img width="1899" height="897" alt="projets v  ordi" src="https://github.com/user-attachments/assets/7472436e-8d58-4efb-99e7-5f17b70f53b3" />
-<img width="498" height="1080" alt="Projet v  mobile(Sombre)" src="https://github.com/user-attachments/assets/89036da8-dd37-47a5-a22c-3e75587541fc" />
-<img width="1901" height="908" alt="contact v  ordi" src="https://github.com/user-attachments/assets/e328b0d8-fa7a-405c-89d7-49e078862263" />
-<img width="1900" height="900" alt="propos v ordi" src="https://github.com/user-attachments/assets/e2c341f6-14f8-43f9-bec4-3cb581c5b079" />
-<img width="1885" height="902" alt="accueil v ordi" src="https://github.com/user-attachments/assets/24c1a64c-bf08-4958-b216-858c0f65107d" />
-
+Capture de la page Mes projets, version ordinateur avec le mode sombre. 
+<img width="2160" height="1350" alt="mes projets ver ordi" src="https://github.com/user-attachments/assets/7747066b-1df8-4a8b-b6bd-e241501e09eb" /> 
 
 
 ---
@@ -43,22 +41,6 @@ Ce projet est un site web portfolio statique contenant quatre pages principales:
 ## 🌐 Lien du site en ligne
 
 🔗 [Voir le portfolio en ligne](https://ibrahimakhalilfaye6-a11y.github.io/Fisrt-Project-/)
-
----
-
-## 📁 Structure du projet
-
-```
-PORTFOLIO/
-├── PageAccueil.html
-├── A Propos.html
-├── MesProjets.html
-├── Contact.html
-├── STYLE.css
-├── script.js
-├── godfirst.jpeg
-└── README.md
-```
 
 ---
 
