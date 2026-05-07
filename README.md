@@ -44,9 +44,12 @@ Capture de la page Mes projets, version ordinateur avec le mode sombre.
 
 ---
 
-## 👤 Auteur
+## 👤 Auteurs
 
-**Ibrahima Khalil Faye**  
+**Ibrahima Khalil Faye** 
+**Ch. Béthio Ndiaye**
+**Fatou Kiné Diop**
+
 - GitHub : [@ibrahimakhalilfaye6-a11y](https://github.com/ibrahimakhalilfaye6-a11y) 
 
 ---
