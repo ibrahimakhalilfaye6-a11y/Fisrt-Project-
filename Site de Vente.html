@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parfums Élégance</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f1ee;
+      color: #222;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(18, 24, 39, 0.96);
+      color: #fff;
+      z-index: 1000;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .header-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .site-title {
+      margin: 0;
+      font-size: 1.55rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #f8f7f3;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+
+    nav a:hover {
+      color: #d8c2b6;
+    }
+
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 140px 20px 40px;
+    }
+
+    .hero {
+      position: relative;
+      border-radius: 24px;
+      min-height: 380px;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .banner-slider {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+
+    .banner-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .banner-slide.active {
+      opacity: 1;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(18, 24, 39, 0.35), rgba(18, 24, 39, 0.9));
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .banner-content h1 {
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      margin: 0 0 18px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .banner-content p {
+      margin: 0 auto;
+      max-width: 680px;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #ece7e1;
+    }
+
+    .banner-indicators {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 2;
+    }
+
+    .banner-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .banner-indicator.active {
+      background: #ffffff;
+      transform: scale(1.2);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 24px;
+      color: #1f2937;
+    }
+
+    .grid-produits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .carousel {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(220px, 1fr);
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .carousel::-webkit-scrollbar-thumb {
+      background: rgba(18, 24, 39, 0.35);
+      border-radius: 8px;
+    }
+
+    .carousel-card {
+      scroll-snap-align: start;
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .carousel-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-card-content {
+      padding: 18px 16px;
+    }
+
+    .carousel-card-content h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: #111827;
+    }
+
+    .carousel-card-content p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .carousel-card-button {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border: none;
+      background: #151b2f;
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      text-transform: uppercase;
+    }
+
+    .carousel-card-button:hover {
+      background: #36415a;
+    }
+
+    .produit {
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .produit:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 60px rgba(15, 23, 42, 0.16);
+    }
+
+    .produit img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .produit-content {
+      padding: 24px 22px 26px;
+    }
+
+    .produit-content h3 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+      color: #111827;
+    }
+
+    .produit-content p {
+      margin: 0 0 14px;
+      color: #565f6c;
+      line-height: 1.7;
+    }
+
+    .prix {
+      margin: 0 0 18px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #9c6952;
+    }
+
+    .btn-ajout {
+      display: inline-block;
+      padding: 12px 20px;
+      border: none;
+      background: #151b2f;
+      color: #fff;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-ajout:hover {
+      background: #36415a;
+    }
+
+    .contact-text {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 16px;
+      color: #4b5563;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px 20px;
+      background: #111827;
+      color: #fff;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 720px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin: 8px 10px 0 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <p class="site-title">Parfums Élégance</p>
+      <nav>
+        <a href="#home">Accueil</a>
+        <a href="#collection">Collection</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="banner-slider" aria-label="Diaporama de parfums">
+        <div class="banner-slide active" style="background-image: url('https://source.unsplash.com/1600x900/?perfume,luxury');"></div>
+        <div class="banner-slide" style="background-image: url('https://source.unsplash.com/1600x900/?perfume,bottle');"></div>
+        <div class="banner-slide" style="background-image: url('https://source.unsplash.com/1600x900/?perfume,beauty');"></div>
+      </div>
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <h1>Parfums de classe pour vos instants les plus précieux</h1>
+        <p>Explorez une sélection raffinée de parfums de luxe, pensée pour sublimer votre présence et révéler votre style.</p>
+      </div>
+      <div class="banner-indicators">
+        <button class="banner-indicator active" aria-label="Diapositive 1"></button>
+        <button class="banner-indicator" aria-label="Diapositive 2"></button>
+        <button class="banner-indicator" aria-label="Diapositive 3"></button>
+      </div>
+    </section>
+
+    <section id="collection">
+      <h2 class="section-title">Notre collection de parfums</h2>
+      <div class="grid-produits">
+        <article class="produit">
+          <img src="https://source.unsplash.com/featured/?luxury-perfume" alt="Élixir Ambre">
+          <div class="produit-content">
+            <h3>Élixir Ambre</h3>
+            <p>Un parfum chaleureux aux notes ambrées, vanillées et boisées.</p>
+            <p class="prix">12 500 FCFA</p>
+            <button class="btn-ajout">Ajouter au panier</button>
+          </div>
+        </article>
+
+        <article class="produit">
+          <img src="https://source.unsplash.com/featured/?perfume-bottle,elegant" alt="Rose Royale">
+          <div class="produit-content">
+            <h3>Rose Royale</h3>
+            <p>Un accord floral sophistiqué pour une signature délicate et féminine.</p>
+            <p class="prix">10 900 FCFA</p>
+            <button class="btn-ajout">Ajouter au panier</button>
+          </div>
+        </article>
+
+        <article class="produit">
+          <img src="https://source.unsplash.com/featured/?oriental-perfume" alt="Noir Mystère">
+          <div class="produit-content">
+            <h3>Noir Mystère</h3>
+            <p>Une composition orientale profonde, riche en muscs et épices.</p>
+            <p class="prix">13 800 FCFA</p>
+            <button class="btn-ajout">Ajouter au panier</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="collections" class="mt-5">
+      <h2 class="section-title">Collections</h2>
+      <div class="carousel">
+        <article class="carousel-card">
+          <img src="https://source.unsplash.com/featured/?floral-perfume" alt="Collection Florale">
+          <div class="carousel-card-content">
+            <h3>Collection Florale</h3>
+            <p>Éveil des sens avec une palette de roses et jasmins délicats.</p>
+            <button class="carousel-card-button">Voir la collection</button>
+          </div>
+        </article>
+
+        <article class="carousel-card">
+          <img src="https://source.unsplash.com/featured/?wood-scent" alt="Collection Boisée">
+          <div class="carousel-card-content">
+            <h3>Collection Boisée</h3>
+            <p>Ambre chaud et bois précieux pour une présence élégante.</p>
+            <button class="carousel-card-button">Voir la collection</button>
+          </div>
+        </article>
+
+        <article class="carousel-card">
+          <img src="https://source.unsplash.com/featured/?oriental-fragrance" alt="Collection Orientale">
+          <div class="carousel-card-content">
+            <h3>Collection Orientale</h3>
+            <p>Épices sensuelles et muscs profonds pour un sillage mystérieux.</p>
+            <button class="carousel-card-button">Voir la collection</button>
+          </div>
+        </article>
+
+        <article class="carousel-card">
+          <img src="https://source.unsplash.com/featured/?fresh-fragrance" alt="Collection Fraîcheur">
+          <div class="carousel-card-content">
+            <h3>Collection Fraîcheur</h3>
+            <p>Notes aquatiques et agrumes pour une sensation pure et légère.</p>
+            <button class="carousel-card-button">Voir la collection</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contactez-nous</h2>
+      <p class="contact-text">Pour une commande personnalisée, un conseil parfum ou une demande spéciale, notre équipe est à votre écoute.</p>
+      <p class="contact-text">Email : contact@parfumselegance.sn · Téléphone : 77 123 45 67</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Parfums Élégance - Livraison rapide · Paiement sécurisé</p>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.banner-slide');
+    const indicators = document.querySelectorAll('.banner-indicator');
+    let currentSlide = 0;
+    let slideInterval = null;
+
+    const setSlide = index => {
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+      indicators.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      currentSlide = index;
+    };
+
+    const nextSlide = () => setSlide((currentSlide + 1) % slides.length);
+
+    indicators.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        setSlide(index);
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 4500);
+      });
+    });
+
+    if (slides.length > 0) {
+      slideInterval = setInterval(nextSlide, 4500);
+    }
+  </script>
+</body>
+</html>

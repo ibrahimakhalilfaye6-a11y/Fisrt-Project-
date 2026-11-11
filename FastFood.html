@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chez Xalil Saflé</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    body {
+    margin-top: 70px;
+    scroll-behavior: smooth;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url("https://source.unsplash.com/1600x900/?restaurant") center/cover;
+}
+
+/* CARDS */
+.menu-card {
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.menu-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.menu-card:hover {
+    transform: scale(1.05);
+}
+
+/* GALERIE */
+.gallery-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.gallery-img:hover {
+    transform: scale(1.03);
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 25px;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Le Gourmand</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li><a class="nav-link" href="#home">Accueil</a></li>
+        <li><a class="nav-link" href="#menu">Menu</a></li>
+        <li><a class="nav-link" href="#gallery">Dessert</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero d-flex align-items-center text-center">
+  <div class="container text-white">
+    <h1 class="display-4 fw-bold">Chez Xalil Saflé</h1>
+    <p>Une expérience culinaire unique à Dakar</p>
+    <a href="#menu" class="btn btn-warning btn-lg">Commander maintenant</a>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="py-5 text-center">
+  <div class="container">
+    <h2>Notre Menu</h2>
+
+    <div class="row mt-4">
+
+      <div class="col-md-4">
+        <div class="card menu-card">
+          <img src="thieb.jpeg" class="card-img-top">
+          <div class="card-body">
+            <h5>Thieboudienne</h5>
+            <p>3500 FCFA</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card menu-card">
+          <img src="yassa.jpeg" class="card-img-top">
+          <div class="card-body">
+            <h5>Yassa Poulet</h5>
+            <p>3000 FCFA</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card menu-card">
+          <img src="burger.jpeg" class="card-img-top">
+          <div class="card-body">
+            <h5>Burger Maison</h5>
+            <p>2500 FCFA</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DESSERTS -->
+<section id="gallery" class="bg-light py-5 text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="mb-4">Dessert</h1>
+      </div>
+    </div>
+
+    <div class="row mt-4 g-3">
+      <div class="col-12 col-md-6 text-start px-2">
+        <img src="flan.jpeg" class="img-fluid gallery-img" alt="Dessert">
+        <h5 class="mt-2">Flan maison</h5>
+        <p>1200 FCFA</p>
+      </div>
+      <div class="col-12 col-md-6 text-start px-2">
+        <img src="cocktail.jpeg" class="img-fluid gallery-img" alt="Dessert aléatoire">
+        <h5 class="mt-2">Cocktail dessert</h5>
+        <p>1500 FCFA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section class="py-5 text-center">
+  <div class="container">
+    <h2>Avis Clients</h2>
+
+    <p class="mt-4">⭐️⭐️⭐️⭐️⭐️ “Excellent service et plats délicieux !”</p>
+    <p>⭐️⭐️⭐️⭐️⭐️ “Le meilleur restaurant de Dakar !”</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 text-center">
+  <div class="container">
+    <h2>Contact</h2>
+    <p><i class="fas fa-phone"></i> 77 177 77 77</p>
+    <p><i class="fas fa-map-marker-alt"></i> Dakar, Sénégal</p>
+  </div>
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/221771777777" class="whatsapp" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+  <p>© 2026 Le Gourmand</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

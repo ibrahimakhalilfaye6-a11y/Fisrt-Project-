@@ -70,13 +70,14 @@ animerAuScroll(); // lancer au chargement
 const formulaire = document.getElementById('contactForm');
 
 if (formulaire) {
-  formulaire.addEventListener('submit', function (e) {
+  formulaire.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const nom     = document.getElementById('nom');
     const email   = document.getElementById('email');
     const message = document.getElementById('message');
     const alerte  = document.getElementById('alerte');
+    const bouton  = formulaire.querySelector('button[type="submit"]');
 
     let erreur = '';
 
@@ -110,16 +111,40 @@ if (formulaire) {
       alerte.textContent = erreur;
       alerte.className = 'alert alert-erreur';
       alerte.style.display = 'block';
-    } else {
+      return;
+    }
+
+    bouton.disabled = true;
+    bouton.textContent = 'Envoi en cours...';
+    alerte.style.display = 'none';
+
+    try {
+      const reponse = await fetch(formulaire.action, {
+        method: 'POST',
+        body: new FormData(formulaire),
+        headers: { Accept: 'application/json' }
+      });
+      const resultat = await reponse.json();
+
+      if (!reponse.ok || resultat.success !== 'true') {
+        throw new Error(resultat.message || 'Le service email a refusé le message.');
+      }
+
       alerte.textContent = 'Message envoyé avec succès ! Je vous répondrai rapidement.';
       alerte.className = 'alert alert-succes';
       alerte.style.display = 'block';
       formulaire.reset();
 
-      // Cacher l'alerte après 4 secondes
       setTimeout(function () {
         alerte.style.display = 'none';
       }, 4000);
+    } catch (erreurEnvoi) {
+      alerte.textContent = 'Échec de l’envoi : ' + erreurEnvoi.message;
+      alerte.className = 'alert alert-erreur';
+      alerte.style.display = 'block';
+    } finally {
+      bouton.disabled = false;
+      bouton.textContent = 'Envoyer le message';
     }
   });
 }
